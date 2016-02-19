@@ -2,13 +2,13 @@
 
 ember-pikaday is an addon that can be installed with Ember CLI. It gives you a datepicker input component that can be used in your Ember.js application. Pikaday and Moment.js are used in the background so they are added as Bower dependencies to your application.
 
-**The component provided by ember-pikaday is fully acceptance tested. It also provides test helpers to interact with the datepicker in your own acceptance tests.**
+**Forked from ember-pikaday this is NOT acceptance tested. I broke all the tests. Be careful**
 
 ## Installation
 
 ```bash
 cd your-project-directory
-ember install ember-pikaday
+ember install brancusi/ember-pikaday
 ```
 
 ## Usage
@@ -142,12 +142,12 @@ ember-pikaday will not automatically convert the date to UTC if your application
 
 ## Data Down, Actions Up
 
-ember-pikaday has its origin prior Embers moved to the Data Down, Actions Up (DDAU) paradigma. Therefore it operates in a two way binding mode by default. If you want to be closer to DDAU you can extend the `pikaday-input` component and overwrite certain callbacks to accomplish DDAU.
-
-`onOpen` is called whenever the datepicker opens.  
-`onClose` is called whenever the datepicker is closed.  
-`onSelect` is called whenever the user selected a date.  
-`onDraw` is called whenever the datepicker is (re-) drawn.
+```handlebars
+<label>
+  Start date:
+  {{pikaday-input value=startsAt onSelected=(action 'myCoolAction')}}
+</label>
+```
 
 ## Localization
 
