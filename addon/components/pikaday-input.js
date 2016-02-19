@@ -16,7 +16,7 @@ export default Ember.Component.extend({
       onSelect: Ember.run.bind(this, this.userSelectedDate),
       firstDay: (typeof firstDay !== 'undefined') ? parseInt(firstDay, 10) : 1,
       yearRange: this.determineYearRange(),
-      format: this.get('minDate') || 'DD.MM.YYYY',
+      format: this.get('format') || 'DD.MM.YYYY',
       minDate: this.get('minDate') || null,
       maxDate: this.get('maxDate') || null,
       theme: this.get('theme') || null
