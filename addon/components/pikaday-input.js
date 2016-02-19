@@ -32,10 +32,12 @@ export default Ember.Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
-    this.setPikadayDate();
-    this.setMinDate();
-    this.setMaxDate();
-    this.checkAutoHide();
+    Ember.run.scheduleOnce('afterRender', () => {
+      this.setPikadayDate();
+      this.setMinDate();
+      this.setMaxDate();
+      this.checkAutoHide();
+    });
   },
 
   willDestroy() {
