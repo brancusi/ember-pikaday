@@ -27,7 +27,6 @@ export default Ember.Component.extend({
     }
 
     this.pikaday = new Pikaday(options);
-    this.setPikadayDate();
   },
 
   didReceiveAttrs() {
