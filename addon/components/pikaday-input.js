@@ -26,7 +26,7 @@ export default Ember.Component.extend({
       options.i18n = this.get('i18n');
     }
 
-    this.set('pikaday', new Pikaday(options));
+    this.pikaday = new Pikaday(options);
     this.setPikadayDate();
   },
 
@@ -41,29 +41,29 @@ export default Ember.Component.extend({
   },
 
   willDestroy() {
-    this.get('pikaday').destroy();
+    this.pikaday.destroy();
   },
 
   setPikadayDate() {
-    if(this.get('value') && this.get('pikaday')){
-      this.get('pikaday').setMoment(moment(this.get('value')));
+    if(this.get('value') && this.pikaday){
+      this.pikaday.setMoment(moment(this.get('value')));
     }
   },
 
   setMinDate() {
     if(this.get('value') && this.get('minDate')){
-      this.get('pikaday').setMinDate(this.get('minDate'));
+      this.pikaday.setMinDate(this.get('minDate'));
     }
   },
 
   setMaxDate() {
     if(this.get('value') && this.get('maxDate')){
-      this.get('pikaday').setMaxDate(this.get('maxDate'));
+      this.pikaday.setMaxDate(this.get('maxDate'));
     }
   },
 
   userSelectedDate() {
-    const date = this.get('useUTC') ? this.toUTC(this.get('pikaday').getDate()) : this.get('pikaday').getDate();
+    const date = this.get('useUTC') ? this.toUTC(this.pikaday.getDate()) : this.pikaday.getDate();
 
     if(this.attrs.onSelected) {
       this.attrs.onSelected(date);
@@ -95,8 +95,8 @@ export default Ember.Component.extend({
   },
 
   checkAutoHide() {
-    if (this.get('disabled') && this.get('pikaday')) {
-      this.get('pikaday').hide();
+    if (this.get('disabled') && this.pikaday) {
+      this.pikaday.hide();
     }
   }
 });
